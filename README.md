@@ -1,6 +1,8 @@
 # SearchEditBox
 Componente DBSearchEditBox, para Delphi VCL
 
+# Componente Desenvolvido no Delphi Rio - 10.3.3
+
 
 
 ## Grupos de Delphi para discusão e compartilhamneto de informações sobre Delphi, Pascal e afins.
