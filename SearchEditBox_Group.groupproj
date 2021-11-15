@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{EA14FAA2-E6EE-4BC2-9D28-8D2C0FCAC4F0}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Projeto\SearchEditBox.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demo\EditDePesquisa.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SearchEditBox">
+        <MSBuild Projects="Projeto\SearchEditBox.dproj"/>
+    </Target>
+    <Target Name="SearchEditBox:Clean">
+        <MSBuild Projects="Projeto\SearchEditBox.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SearchEditBox:Make">
+        <MSBuild Projects="Projeto\SearchEditBox.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="EditDePesquisa">
+        <MSBuild Projects="Demo\EditDePesquisa.dproj"/>
+    </Target>
+    <Target Name="EditDePesquisa:Clean">
+        <MSBuild Projects="Demo\EditDePesquisa.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EditDePesquisa:Make">
+        <MSBuild Projects="Demo\EditDePesquisa.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SearchEditBox;EditDePesquisa"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SearchEditBox:Clean;EditDePesquisa:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SearchEditBox:Make;EditDePesquisa:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
