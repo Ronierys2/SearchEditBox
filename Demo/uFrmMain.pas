@@ -30,6 +30,7 @@ type
     Label4: TLabel;
     SearchEditBox1: TSearchEditBox;
     Edit1: TEdit;
+    DBGrid1: TDBGrid;
 
     procedure FormCreate(Sender: TObject);
   private

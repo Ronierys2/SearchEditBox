@@ -295,7 +295,6 @@ object Form1: TForm1
     Color = clGrayText
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 752
     object Label1: TLabel
       Left = 8
       Top = 10
@@ -343,7 +342,6 @@ object Form1: TForm1
     Padding.Bottom = 5
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 752
     object SearchEditBox1: TSearchEditBox
       Left = 154
       Top = 5
@@ -355,7 +353,6 @@ object Form1: TForm1
       Align = alRight
       TabOrder = 0
       Text = 'SearchEditBox1'
-      ExplicitLeft = 144
       ExplicitHeight = 21
     end
     object Edit1: TEdit
@@ -366,9 +363,20 @@ object Form1: TForm1
       Align = alRight
       TabOrder = 1
       Text = 'Edit1'
-      ExplicitLeft = 611
       ExplicitHeight = 21
     end
+  end
+  object DBGrid1: TDBGrid
+    Left = 400
+    Top = 136
+    Width = 320
+    Height = 120
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
   end
   object DataSource1: TDataSource
     DataSet = FDMemTable1

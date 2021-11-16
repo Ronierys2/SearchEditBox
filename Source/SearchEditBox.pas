@@ -36,6 +36,7 @@ uses
   Vcl.Dialogs,
   Vcl.ImgList,
   Vcl.DBGrids,
+  Vcl.Grids,
   Vcl.DBCtrls,
   Vcl.WinXCtrls,
 
@@ -76,6 +77,9 @@ type
 
     {============ EDIT DE PESQUISA==========}
     procedure OnKeyDownEditPesquisa(Sender: TObject; var Key: Word; Shift: TShiftState);
+
+    procedure OnDBGridPesDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
 
     {============ TSearchEditBox ==========}
     procedure SetDataSource(const Value: TDataSource);
@@ -395,15 +399,16 @@ begin
   {$EndRegion}
 
   {$Region 'DBGrid'}
-  DBGridPes             :=  TDBGrid.Create(FrmPesquisa);
-  DBGridPes.Name        :=  'DBGridPes' + IntToStr(Random(9999));
-  DBGridPes.Parent      :=  pnlClient;
-  DBGridPes.Align       :=  alClient;
-  DBGridPes.BorderStyle :=  bsNone;
-  DBGridPes.DataSource  :=  DataSource;
-  DBGridPes.Options     :=  DBGridPes.Options + [ dgTitles, dgIndicator, dgColumnResize, dgColLines,
-                                                  dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit,
-                                                  dgMultiSelect, dgTitleClick, dgTitleHotTrack];
+  DBGridPes                   :=  TDBGrid.Create(FrmPesquisa);
+  DBGridPes.Name              :=  'DBGridPes' + IntToStr(Random(9999));
+  DBGridPes.Parent            :=  pnlClient;
+  DBGridPes.Align             :=  alClient;
+  DBGridPes.BorderStyle       :=  bsNone;
+  DBGridPes.DataSource        :=  DataSource;
+  DBGridPes.OnDrawColumnCell  :=  OnDBGridPesDrawColumnCell;
+  DBGridPes.Options           :=  DBGridPes.Options + [ dgTitles, dgIndicator, dgColumnResize, dgColLines,
+                                                        dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit,
+                                                        dgMultiSelect, dgTitleClick, dgTitleHotTrack];
   {$EndRegion}
 
   {$Region 'Botão Ok'}
@@ -457,6 +462,36 @@ begin
     FreeAndNil(FrmPesquisa);
   end;
 
+end;
+
+procedure TSearchEditBox.OnDBGridPesDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  Check: Integer;
+  R: TRect;
+begin
+  {zebrar grid com as cores denifidas aqui}
+  with TDBGrid(Sender) do
+    begin
+      if
+       Odd( DataSource.DataSet.RecNo)
+      then
+       Canvas.Brush.Color := clScrollBar
+      else
+       Canvas.Brush.Color := clMenuHighlight;
+       Canvas.FillRect(Rect);
+       DefaultDrawColumnCell(Rect,DataCol,Column,State);
+
+      {define cor da fonte do texto e da linha selecionada - cores definidas aqui}
+      if gdSelected in State then
+        with Canvas do
+          begin
+            font.Color:= clWhite; //aqui é definida a cor da fonte
+            Brush.Color:=clHighlight; //aqui é definida a cor do fundo
+            FillRect(Rect);
+          end;
+      DefaultDrawDataCell(Rect, TDbGrid(Sender).columns[datacol].field, State);
+    end;
 end;
 
 procedure TSearchEditBox.OnFecharTelaSharedClick(Sender: TObject);
