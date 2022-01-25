@@ -31,6 +31,7 @@ type
     SearchEditBox1: TSearchEditBox;
     Edit1: TEdit;
     DBGrid1: TDBGrid;
+    LabeledEdit1: TLabeledEdit;
 
     procedure FormCreate(Sender: TObject);
   private

@@ -378,6 +378,16 @@ object Form1: TForm1
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
   end
+  object LabeledEdit1: TLabeledEdit
+    Left = 448
+    Top = 328
+    Width = 121
+    Height = 21
+    EditLabel.Width = 61
+    EditLabel.Height = 13
+    EditLabel.Caption = 'LabeledEdit1'
+    TabOrder = 3
+  end
   object DataSource1: TDataSource
     DataSet = FDMemTable1
     Left = 24

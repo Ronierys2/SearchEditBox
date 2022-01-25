@@ -60,6 +60,8 @@ type
     DBGridPes : TDBGrid;
     FDataSeparador: char;
 
+    EdtPesquisa : TLabeledEdit;
+
     {============ TSearchEditBox ==========}
     procedure OnCreateShowFormPesquisa(Sender: TObject);
 
@@ -332,7 +334,6 @@ var
   pnlClient   : TPanel;
   btnCancelar : TButton;
   btnOk       : TButton;
-  EdtPesquisa : TEdit;
   MyClass: TComponent;
 begin
   if not Assigned(DataSource) then
@@ -357,16 +358,16 @@ begin
   {$EndRegion}
 
   {$Region 'Panel Buttom Botões de ação'}
-  pnlButtom                   :=  TPanel.Create(FrmPesquisa);
-  pnlButtom.Name              :=  'pnlButtom' + IntToStr(Random(9999));
-  pnlButtom.Caption           :=  EmptyStr;
-  pnlButtom.Parent            :=  FrmPesquisa;
-  pnlButtom.ParentBackground  :=  False;
-  pnlButtom.ParentColor       :=  False;
-  pnlButtom.BevelOuter        :=  TBevelCut.bvNone;
-  pnlButtom.Color             :=  clHotLight;
-  pnlButtom.Align             :=  TAlign.alBottom;
-  pnlButtom.Height            :=  40;
+//  pnlButtom                   :=  TPanel.Create(FrmPesquisa);
+//  pnlButtom.Name              :=  'pnlButtom' + IntToStr(Random(9999));
+//  pnlButtom.Caption           :=  EmptyStr;
+//  pnlButtom.Parent            :=  FrmPesquisa;
+//  pnlButtom.ParentBackground  :=  False;
+//  pnlButtom.ParentColor       :=  False;
+//  pnlButtom.BevelOuter        :=  TBevelCut.bvNone;
+//  pnlButtom.Color             :=  clHotLight;
+//  pnlButtom.Align             :=  TAlign.alBottom;
+//  pnlButtom.Height            :=  40;
   {$EndRegion}
 
   {$Region 'Panel Top Pesquisa'}
@@ -374,10 +375,10 @@ begin
   pnlTop.Name              :=  'pnlTop' + IntToStr(Random(9999));
   pnlTop.Caption           :=  EmptyStr;
   pnlTop.Parent            :=  FrmPesquisa;
-  pnlTop.ParentBackground  :=  False;
+//  pnlTop.ParentBackground  :=  False;
   pnlTop.ParentColor       :=  False;
   pnlTop.BevelOuter        :=  TBevelCut.bvNone;
-  pnlTop.Color             :=  clHotLight;
+//  pnlTop.Color             :=  clHighlight;
   pnlTop.Align             :=  TAlign.alTop;
   pnlTop.Height            :=  50;
 //  pnlTop.AlignWithMargins  :=  True;
@@ -412,46 +413,50 @@ begin
   {$EndRegion}
 
   {$Region 'Botão Ok'}
-  btnOk                   :=  TButton.Create(FrmPesquisa);
-  btnOk.Name              :=  'btnOk' + IntToStr(Random(9999));
-  btnOk.Parent            :=  pnlButtom;
-  btnOk.Width             :=  80;
-  btnOk.Align             :=  TAlign.alLeft;
-  btnOk.Caption           :=  'Ok';
-  btnOk.OnClick           :=  OnBtnOkClick;
-  btnOk.AlignWithMargins  :=  True;
-  btnOk.Margins.SetBounds(10, 3, 0, 3);
+//  btnOk                   :=  TButton.Create(FrmPesquisa);
+//  btnOk.Name              :=  'btnOk' + IntToStr(Random(9999));
+//  btnOk.Parent            :=  pnlButtom;
+//  btnOk.Width             :=  80;
+//  btnOk.Align             :=  TAlign.alLeft;
+//  btnOk.Caption           :=  'Ok';
+//  btnOk.OnClick           :=  OnBtnOkClick;
+//  btnOk.AlignWithMargins  :=  True;
+//  btnOk.Visible           :=  False; {melhorar layout}
+//  btnOk.Margins.SetBounds(10, 3, 0, 3);
   {$EndRegion}
 
   {$Region 'Botão Cancelar'}
-  btnCancelar                   :=  TButton.Create(FrmPesquisa);
-  btnCancelar.Name              :=  'btnCancelar' + IntToStr(Random(9999));
-  btnCancelar.Parent            :=  pnlButtom;
-  btnCancelar.Width             :=  80;
-  btnCancelar.Align             :=  TAlign.alRight;
-  btnCancelar.AlignWithMargins  :=  True;
-  btnCancelar.Caption           :=  'Fechar';
-  btnCancelar.OnClick           :=  OnBtnCancelarClick;
-  btnCancelar.Margins.SetBounds(0, 3, 10, 3);
+//  btnCancelar                   :=  TButton.Create(FrmPesquisa);
+//  btnCancelar.Name              :=  'btnCancelar' + IntToStr(Random(9999));
+//  btnCancelar.Parent            :=  pnlButtom;
+//  btnCancelar.Width             :=  80;
+//  btnCancelar.Align             :=  TAlign.alRight;
+//  btnCancelar.AlignWithMargins  :=  True;
+//  btnCancelar.Caption           :=  'Fechar';
+//  btnCancelar.OnClick           :=  OnBtnCancelarClick;
+//  btnCancelar.Visible           :=  False; {melhorar layout}
+//  btnCancelar.Margins.SetBounds(0, 3, 10, 3);
   {$EndRegion}
 
   {$Region 'Edit Pesquisa'}
-  EdtPesquisa                   :=  TEdit.Create(FrmPesquisa);
+  EdtPesquisa                   :=  TLabeledEdit.Create(FrmPesquisa);
   EdtPesquisa.Name              :=  'EdtPesquisa' + IntToStr(Random(9999));
   EdtPesquisa.Parent            :=  pnlTop;
   EdtPesquisa.Width             :=  80;
-  EdtPesquisa.Align             :=  TAlign.alClient;
+  EdtPesquisa.Align             :=  TAlign.alBottom;
   EdtPesquisa.Text              :=  EmptyStr;
-  EdtPesquisa.Font.Size         :=  12;
+  EdtPesquisa.Font.Size         :=  10;
   EdtPesquisa.Font.Color        :=  clHotLight;
   EdtPesquisa.AlignWithMargins  :=  True;
   EdtPesquisa.OnKeyUp           :=  OnKeyDownEditPesquisa;
   EdtPesquisa.BorderStyle       :=  bsNone;
   EdtPesquisa.CharCase          :=  ecUpperCase;
-  EdtPesquisa.Margins.SetBounds(10, 10, 10, 10);
+  EdtPesquisa.Margins.SetBounds(10, 0, 10, 10);
 
 
   EdtPesquisa.TextHint := 'Digite aqui para filtrar por:  ' + FDataLink.Field.DisplayLabel;
+  EdtPesquisa.EditLabel.Caption := 'Digite aqui para filtrar por:  ' + FDataLink.Field.DisplayLabel;
+  EdtPesquisa.EditLabel.Font.Color := clNavy;
   EdtPesquisa.Clear;
   {$EndRegion}
 
@@ -503,12 +508,18 @@ procedure TSearchEditBox.OnKeyDownEditPesquisa(Sender: TObject; var Key: Word; S
 var
   Filter: String;
 begin
-  if Key = VK_ESCAPE then
-    OnBtnCancelarClick(Sender)
-  else
-    if Key = VK_RETURN then
-      OnBtnOkClick(Sender)
-    else
+  if Key = VK_DOWN then
+    begin
+      Key :=  0;
+      DBGridPes.SetFocus;
+      Exit;
+    end;
+//  if Key = VK_ESCAPE then
+//    OnBtnCancelarClick(Sender)
+//  else
+//    if Key = VK_RETURN then
+//      OnBtnOkClick(Sender)
+//    else
       begin
         if TEdit(Sender).Text <>  EmptyStr then
           begin
@@ -555,17 +566,30 @@ procedure TSearchEditBox.OnKeyDownFrmPesquisa(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if Key = VK_RETURN then
-    OnBtnOkClick(Sender)
-  else
-    if Key = VK_ESCAPE then
+    begin
+      Key :=  0;
+      OnBtnOkClick(Sender);
+      Exit;
+    end;
+
+  if Key = VK_ESCAPE then
+    begin
+      Key :=  0;
       OnBtnCancelarClick(Sender);
+      Exit;
+    end;
 end;
 
 procedure TSearchEditBox.OnKeyDownSearchEditBox(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if Key = VK_RETURN then
-    OnCreateShowFormPesquisa(Sender);
+    begin
+      Key :=  0;
+      OnCreateShowFormPesquisa(Sender);
+      Exit;
+    end;
+
 end;
 
 procedure TSearchEditBox.onShowFrmshared(Sender: TObject);
@@ -586,6 +610,8 @@ begin
   FrmPesquisa.Top   :=  pRect.Top  + Self.Height + 3;
 
   FixDBGridColumnsWidth(DBGridPes);
+
+  EdtPesquisa.SetFocus;
 
 end;
 
