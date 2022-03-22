@@ -38,7 +38,7 @@ uses
   Vcl.DBGrids,
   Vcl.Grids,
   Vcl.DBCtrls,
-  Vcl.WinXCtrls,
+//  Vcl.WinXCtrls,
 
   Data.DB,
 
@@ -449,7 +449,7 @@ begin
   EdtPesquisa.Font.Color        :=  clHotLight;
   EdtPesquisa.AlignWithMargins  :=  True;
   EdtPesquisa.OnKeyUp           :=  OnKeyDownEditPesquisa;
-  EdtPesquisa.BorderStyle       :=  bsNone;
+  EdtPesquisa.BorderStyle       :=  bsSingle;
   EdtPesquisa.CharCase          :=  ecUpperCase;
   EdtPesquisa.Margins.SetBounds(10, 0, 10, 10);
 
