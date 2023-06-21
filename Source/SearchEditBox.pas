@@ -14,7 +14,7 @@
 { Versão Original RSC SISTEMAS          }
 { Versão: 1.0.0                         }
 {                                       }
-{                                       }
+{       ggfgfhgfh                             }
 {=======================================}
 
 unit SearchEditBox;
